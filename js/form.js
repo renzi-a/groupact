@@ -7,17 +7,16 @@ document.querySelector("form").addEventListener("submit", function(event) {
     // Validate name
     if (name === "") {
         alert("Name is required");
-        event.preventDefault();  // Prevent form submission
-        return;  // Exit the function to prevent further validation
+        event.preventDefault();
+        return;
     }
 
     // Validate email
     if (email.indexOf('@') === -1) {
         alert("Invalid email");
-        event.preventDefault();  // Prevent form submission
-        return;  // Exit the function to prevent further validation
+        event.preventDefault();
+    }
 
-
-    // If validation passes, show a success message
+    // If all good:
     alert("Form submitted!");
 });
