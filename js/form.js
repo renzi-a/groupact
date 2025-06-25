@@ -3,6 +3,7 @@ document.querySelector("form").addEventListener("submit", function(event) {
     var name = document.querySelector("[name='name']").value;
     var email = document.querySelector("[name='email']").value;
 
+
     // Validate name
     if (name === "") {
         alert("Name is required");
@@ -15,7 +16,7 @@ document.querySelector("form").addEventListener("submit", function(event) {
         alert("Invalid email");
         event.preventDefault();  // Prevent form submission
         return;  // Exit the function to prevent further validation
-    }
+
 
     // If validation passes, show a success message
     alert("Form submitted!");
