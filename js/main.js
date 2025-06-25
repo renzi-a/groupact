@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function toggleMenu() {
     const button = document.querySelector('button');
-
     if (button.textContent === 'Toggle Menu') {
         button.textContent = 'Menu Toggled';
     } else {
