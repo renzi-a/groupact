@@ -13,7 +13,6 @@ document.querySelector("form").addEventListener("submit", function(event) {
     if (email.indexOf('@') === -1) {
         alert("Invalid email");
         event.preventDefault();
-        return;
     }
 
     // If all good:
