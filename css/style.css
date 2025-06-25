@@ -1,9 +1,9 @@
 .header {
-    background-color: blue; /* Corrected typo */
+    background-color: blue;
     color: white;
-    font-size: 16px; /* Corrected font-size unit */
+    font-size: 16px;
 }
 
-.btn:hover { /* Removed space between .btn and :hover */
+.btn:hover {
     background-color: green;
 }
