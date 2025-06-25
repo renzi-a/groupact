@@ -1,12 +1,198 @@
 <!DOCTYPE html>
-<html>
-<head><title>Contact</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        /* Base reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .user-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .user-icon svg {
+            width: 64px;
+            height: 64px;
+            stroke: #e53935;
+            stroke-width: 2;
+        }
+
+        .contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #e53935;
+            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            background-color: #e53935;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #c62828;
+        }
+
+        .success-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #e53935;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .success-message svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
+            stroke-width: 2.5;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
 <body>
-    <form>
-        <input type="text" name="name">
-        <input type="email" name="email">
-        <button>Submit</button>
+    <form class="contact-form" id="contactForm">
+        <!-- User icon -->
+        <div class="user-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="4" stroke="#e53935" stroke-width="2" />
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#e53935" stroke-width="2" />
+            </svg>
+        </div>
+
+        <h2>Contact Us</h2>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+        <div class="success-message" id="successMessage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <div>Thank you! Your response has been sent.</div>
+        </div>
     </form>
-    <script src="js/form.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contactForm = document.getElementById("contactForm");
+            const successMessage = document.getElementById("successMessage");
+
+            contactForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                // Simulate form processing delay
+                setTimeout(function() {
+                    // Fade the form fields
+                    contactForm.querySelectorAll('input, button, h2').forEach(el => {
+                        el.style.opacity = '0.3';
+                        el.style.pointerEvents = 'none';
+                    });
+                    // Reset form
+                    contactForm.reset();
+                    // Show success message
+                    successMessage.style.display = "block";
+
+                    // After 2 seconds, restore form
+                    setTimeout(function() {
+                        successMessage.style.display = "none";
+                        contactForm.querySelectorAll('input, button, h2').forEach(el => {
+                            el.style.opacity = '1';
+                            el.style.pointerEvents = 'auto';
+                        });
+                    }, 2000);
+                }, 500);
+            });
+        });
+    </script>
 </body>
 </html>
