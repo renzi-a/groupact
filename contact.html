@@ -2,10 +2,10 @@
 <html>
 <head><title>Contact</title></head>
 <body>
-    <form>
-        <input type="text" name="name">
-        <input type="email" name="email">
-        <button>Submit</button>
+    <form action="/submit-form" method="POST"> <!-- Action URL and POST method added -->
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
     </form>
     <script src="js/form.js"></script>
 </body>
