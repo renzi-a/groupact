@@ -1,6 +1,8 @@
 document.querySelector("form").addEventListener("submit", function(event) {
-    var name = document.querySelector("[name='name']").value.trim();
-    var email = document.querySelector("[name='email']").value.trim();
+    // Get the values of name and email
+    var name = document.querySelector("[name='name']").value;
+    var email = document.querySelector("[name='email']").value;
+
 
     // Validate name
     if (name === "") {
